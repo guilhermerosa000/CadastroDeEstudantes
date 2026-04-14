@@ -1,12 +1,18 @@
 package spring.estudos.Cadastro.Estudantes;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import spring.estudos.Cadastro.Cursos.CursosModel;
 
 import java.util.List;
 
 @Entity
 @Table(name = "tb_cadastro")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class EstudanteModel {
 
     @Id
@@ -18,40 +24,8 @@ public class EstudanteModel {
 
     // um estudante tem um único curso
     @ManyToOne
-    @JoinColumn(name = "cursos_id")
-    private List<CursosModel> cursos;
+    @JoinColumn(name = "cursos_id") // Foreing Key
+    private CursosModel curso;
 
-    public EstudanteModel() {
 
-    }
-
-    public EstudanteModel(String nome, String email, int idade) {
-        this.nome = nome;
-        this.email = email;
-        this.idade = idade;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
 }
